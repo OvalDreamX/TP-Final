@@ -1,6 +1,8 @@
 import re
 from tkinter.messagebox import *
 
+# Funcion de validacion
+
 
 def validar(tit):
     patron = "^[A-Za-z]+(?: [_-][A-Za-z]+)*$"

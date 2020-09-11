@@ -11,6 +11,7 @@ import themes
 
 class Admin:
     ID = 0
+    # Ventana Principal
 
     def __init__(self, window):
         self.master = window
@@ -51,6 +52,7 @@ class Admin:
                             bg="darkblue", fg="white", font=(18), width=50)
         self.label4.grid(row=9, column=0, columnspan=3, sticky=EW)
 
+        # Ventana y botones de temas
         self.windowTheme = Label(self.master, bg="blue", width=50)
         self.windowTheme.grid(row=10, column=0, columnspan=3, sticky=EW)
 
@@ -68,6 +70,7 @@ class Admin:
             self.label0, self.label1, self.label3, self.master, self.themeSel.get()))
         self.option3.grid(row=12, column=0, columnspan=3, sticky=EW)
 
+        # Conexion a base de datos
         def regiC(self):
             try:
                 self.mibase = mysql.connector.connect(
@@ -75,9 +78,7 @@ class Admin:
                 self.micursor = self.mibase.cursor()
                 self.micursor.execute("SELECT * FROM producto")
                 self.base = self.micursor.fetchall()
-                # tree.delete(*tree.get_children())
                 for row in base:
-                    # tree.insert("", "end", values=(row[0], row[1], row[2]))
                     self.tree.insert(
                         '', 0, text=row[0], values=(row[1], row[2]))
             except:
@@ -86,6 +87,7 @@ class Admin:
 
             regiC(self)
 
+        # Toma de datos
         def tomarDatos():
             if valid.validar(self.tit.get()) == True:
                 try:
@@ -106,14 +108,17 @@ class Admin:
             else:
                 clear(self)
 
+    # Funciones llamables
         def fagregar(self):
             global ID
             self.ID += 1
             self.tree.insert("", "end", text=str(self.ID),
                              values=(self.e1.get(), self.e3.get()))
 
+        # Funcion de limpieza de campos
         def clear(self): return self.tit.set(""), self.desc.set("")
 
+        # Botones de interaccion con base de datos
         button1 = Button(self.master, text="Alta", command=tomarDatos)
         button1.grid(row=5, column=1)
         button3 = Button(self.master, text="Crear Base de Datos",

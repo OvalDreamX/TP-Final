@@ -18,7 +18,6 @@ class dbClass:
 
         except:
             showinfo("Advertencia", message="La Base de datos ya existe")
-            #print("Base de datos")
 
         try:
             self.mibase = mysql.connector.connect(
@@ -29,4 +28,3 @@ class dbClass:
 
         except:
             showinfo("Advertencia", message="La Tabla ya existe")
-            #print("Tabla ya existe")

@@ -1,3 +1,4 @@
+# Funcion con variables para la seleccion de temas
 def themesFunc(label0, label1, label3, window, themeSel):
     if themeSel == 1:
         window["bg"] = "dark orange"
