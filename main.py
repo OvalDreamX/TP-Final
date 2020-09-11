@@ -88,18 +88,21 @@ class Admin:
 
         def tomarDatos():
             if valid.validar(self.tit.get()) == True:
-
-                self.mibase = mysql.connector.connect(
-                    host="localhost", user="master", passwd="", database="baseDeDatos1")
-                self.micursor = self.mibase.cursor()
-                self.data = (self.tit.get(), self.desc.get())
-                self.micursor.execute(
-                    "INSERT INTO tabla (titulo, descripcion) VALUES (%s, %s)", self.data)
-                self.mibase.commit()
-                print(self.micursor.rowcount, showinfo(
-                    "Exito", message="Datos Guardados"))
-                fagregar(self)
-                clear(self)
+                try:
+                    self.mibase = mysql.connector.connect(
+                        host="localhost", user="master", passwd="", database="baseDeDatos1")
+                    self.micursor = self.mibase.cursor()
+                    self.data = (self.tit.get(), self.desc.get())
+                    self.micursor.execute(
+                        "INSERT INTO tabla (titulo, descripcion) VALUES (%s, %s)", self.data)
+                    self.mibase.commit()
+                    print(self.micursor.rowcount, showinfo(
+                        "Exito", message="Datos Guardados"))
+                    fagregar(self)
+                    clear(self)
+                except:
+                    showerror(
+                        "Error", message="Error conectandose a base de Datos")
             else:
                 clear(self)
 
