@@ -7,6 +7,9 @@ import valid
 import db
 import re
 import themes
+import guardar
+import eliminar
+import actualizar
 
 
 class Admin:
